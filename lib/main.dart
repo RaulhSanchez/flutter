@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/counter_screen.dart';
-import 'package:flutter_application_1/screens/home_screen.dart';
+import 'package:flutter_application_1/router/app_routes.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:flutter_application_1/screens/screens.dart';
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        //debugShowCheckedModeBanner: false, home: HomeScreen());
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: CounterScreen());
+        title: 'Material App',
+        initialRoute: AppRoutes.initalRoute,
+        routes: AppRoutes.routes,
+        onGenerateRoute: AppRoutes.onGenerateRoute);
   }
 }

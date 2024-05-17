@@ -1,41 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const fontSize30 = TextStyle(fontSize: 30);
-    int counter = 10;
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeScreen'),
-        elevation: 10,
+        title: const Text('Componentes en flutter'),
+        elevation: 0,
         centerTitle: true,
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Numero de Clicks',
-              style: fontSize30,
-            ),
-            Text(
-              '',
-              style: fontSize30,
-            )
-          ],
+      body: ListView.separated(
+        itemBuilder: (context, index) => ListTile(
+          title: const Text('Nombre de ruta'),
+          leading: const Icon(Icons.access_time_outlined),
+          onTap: () {
+            // final route = MaterialPageRoute(
+            //     builder: (context) => const ListView1Screen());
+            // Navigator.push(context, route);
+            Navigator.pushNamed(context, 'card');
+          },
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          counter++;
-          print('$counter');
-        },
+        separatorBuilder: (context, index) => const Divider(),
+        itemCount: 10,
       ),
     );
   }
